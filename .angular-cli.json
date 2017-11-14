@@ -25,7 +25,10 @@
         "../node_modules/bootstrap/dist/css/bootstrap-theme.css",
         "app.less"
       ],
-      "scripts": [],
+      "scripts": [
+
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -58,7 +61,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "less",
     "component": {}
   }
 }

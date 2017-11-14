@@ -1,0 +1,52 @@
+@import "../../../styles/theme";
+@import "../../../styles/mixins";
+
+.branch{
+  margin-left: 15px;
+  color: @BLOCK_White;
+  text-indent:0;
+}
+.branch-hide{
+  & ul {
+    opacity:0;
+    display:none;
+    .fadeout(1s);
+  }
+  > i{
+    transform:rotate(0deg);
+    transition: all 0.5s;
+  }
+
+}
+
+.icon-placeholder{
+  margin-right: 15px;
+}
+
+.selected{
+  background-color:@BLOCK_Highlight_Orange;
+}
+.setting-cog{
+  :hover{
+    color: @BLOCK_White;
+    cursor: hand;
+  }
+}
+.badge{
+  display: inline;
+}
+
+.branch-show{
+
+  & ul {
+    opacity:1;
+    .fadein(1s);
+
+  }
+  > i{
+    transform:rotate(90deg);
+    transition: all 0.5s;
+
+  }
+}
+

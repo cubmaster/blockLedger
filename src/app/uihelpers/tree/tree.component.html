@@ -1,0 +1,9 @@
+
+<ul class="list-unstyled branch">
+  <li *ngFor="let node of children"  [ngClass]="{'branch-hide':!!node.children && !node.hide,'branch-show':!!node.children && node.hide}">
+    <i [ngClass]="{'fa fa-chevron-right':!!node.children,'icon-placeholder':!node.children}" (click)="shownode(node)" ></i>
+    <span  [ngClass]="{'badge':node===selectedNode}" (click)="select(node)">{{node.text}}</span>
+    <span (click)="openProps(node)" class="setting-cog"><i *ngIf="node===selectedNode&&showProperties" class="fa fa-cog setting-cog"></i></span>
+    <aot-tree   [showProperties]="showProperties"  [selectedNode]="selectedNode"  [children]="node.children" (onProperties)="childOpenProps($event)" (onSelected)="childSelected($event)" ></aot-tree>
+  </li>
+</ul>
