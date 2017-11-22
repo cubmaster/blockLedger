@@ -10,6 +10,7 @@ import {EventEmitter} from '@angular/core';
 
 import {environment} from '../../environments/environment';
 import {HTTPHelpers} from '../helpers/HTTPHelpers';
+import {UserModel} from '../models/models';
 
 @Injectable()
 export class UserService{
@@ -127,14 +128,20 @@ export class UserService{
   }
 
   private handleError(error:any) {
+    console.log('user service error');
     console.error(JSON.stringify(error));
     return Observable.throw(error || 'Server error');
   }
   public GetAuthSubscription():boolean{
     return this.loggedIn;
   }
-  public getCurrentUser(){
-    return JSON.parse(this.ls.getItem('auth_token')).user;
+  public getCurrentUser(): UserModel {
+    let u =  JSON.parse(this.ls.getItem('auth_token')).user;
+    let cu = new UserModel();
+    cu.username = u.username;
+    cu.firstName = u.firstName;
+    cu.lastName = u.lastName;
+    return cu;
   }
   public getToken(){
     return JSON.parse(this.ls.getItem('auth_token')).access_token;
