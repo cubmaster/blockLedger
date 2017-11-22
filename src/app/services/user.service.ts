@@ -138,13 +138,14 @@ export class UserService{
   public getCurrentUser(): UserModel {
     let u =  JSON.parse(this.ls.getItem('auth_token')).user;
     let cu = new UserModel();
+    cu.id = u.ID;
     cu.username = u.username;
     cu.firstName = u.firstName;
     cu.lastName = u.lastName;
     return cu;
   }
   public getToken(){
-    return JSON.parse(this.ls.getItem('auth_token')).access_token;
+    return JSON.parse(this.ls.getItem('auth_token')).token;
   }
   public isExpired():boolean{
     var expire: Date = new Date(JSON.parse(this.ls.getItem('auth_token')).expires);

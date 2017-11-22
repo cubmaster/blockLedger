@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ItreeNode} from '../../uihelpers/tree/tree.component';
+
+import {NavTreeNode} from '../../models/models';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'aot-nav-tree',
@@ -8,21 +10,26 @@ import {ItreeNode} from '../../uihelpers/tree/tree.component';
 })
 export class NavTreeComponent implements OnInit {
 
-  constructor() { }
+  constructor( private router: Router) { }
 
-  private nodes: ItreeNode[];
+  private nodes: NavTreeNode[];
 
   ngOnInit() {
-      this.nodes = [{text: 'IFRS',hide: false, children: [
-                      {text: 'Administration', hide: false, children: []}]},
-                    {text: 'My Schedule', hide: false, children: []},
-                    {text: 'Roles Accreditation', hide: false, children: []},
-                    {text: 'My Workbasket', hide: false, children: [
-                      {text: 'IFRS Approvals', hide: false, children: []},
-                      {text: 'WRT Approvals', hide: false, children: []},
-                      {text: 'Roles Approvals', hide: false, children: []},
-                      {text: 'Administration', hide: false, children: []}
+      this.nodes = [{text: 'Admin',hide: false, path: '', children: [
+                      {text: 'Wallets', hide: false,path: '/admin/wallets',  children: []}]},
+                    {text: 'My Schedule', hide: false,path: '', children: []},
+                    {text: 'Roles Accreditation', hide: false,path: '', children: []},
+                    {text: 'My Workbasket', hide: false,path: '', children: [
+                      {text: 'IFRS Approvals', hide: false,path: '', children: []},
+                      {text: 'WRT Approvals', hide: false,path: '', children: []},
+                      {text: 'Roles Approvals', hide: false,path: '', children: []},
+                      {text: 'Administration', hide: false,path: '', children: []}
                     ]}];
+  }
+
+  selected(node: NavTreeNode){
+    const path = [node.path];
+    this.router.navigate(path);
   }
 
 }

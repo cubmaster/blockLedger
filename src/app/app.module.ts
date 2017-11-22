@@ -10,6 +10,8 @@ import { HttpModule} from '@angular/http';
 import {UserService} from './services/user.service';
 import {RouterModule} from '@angular/router';
 import {FrameworkModule} from './framework/framework.module';
+import {AdminModule} from './admin/admin.module';
+import {HttpInterceptor} from './services/HttpInterceptor';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,15 @@ import {FrameworkModule} from './framework/framework.module';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    FrameworkModule
+    FrameworkModule,
+    AdminModule
   ],
   providers: [
     JEService,
     PriceAPIService,
-    UserService
+    UserService,
+    HttpInterceptor
+
   ],
   exports: [RouterModule],
   bootstrap: [AppComponent]
