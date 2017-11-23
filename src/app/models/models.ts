@@ -13,9 +13,10 @@ export class NavTreeNode implements ItreeNode {
   path: string;
 }
 
-export class Wallet {
-  account: string;
+export class Account {
+  _id: string;
   name: string;
-  passPhrase: string;
+  address: string;
+  privateKey: string;
   user: string;
 }

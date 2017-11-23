@@ -12,6 +12,7 @@ import {RouterModule} from '@angular/router';
 import {FrameworkModule} from './framework/framework.module';
 import {AdminModule} from './admin/admin.module';
 import {HttpInterceptor} from './services/HttpInterceptor';
+import {AccountManagementService} from './services/account-management.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {HttpInterceptor} from './services/HttpInterceptor';
     JEService,
     PriceAPIService,
     UserService,
-    HttpInterceptor
+    HttpInterceptor,
+    AccountManagementService
 
   ],
   exports: [RouterModule],
