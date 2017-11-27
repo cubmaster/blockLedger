@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel panel-heading">
+    {{account.name}}
+  </div>
+  <div class="panel panel-body">
+    <ul class="list-unstyled">
+      <li>
+        <label class="label label-default">
+          Address: {{account.address}}
+        </label>
+      </li>
+      <li>
+        <label class="label label-default">
+          ETH: {{account.balance}}
+        </label>
+      </li>
+      <li>
+        <label class="label label-default">
+          Balance: {{account.xBalance | currency:'USD':'symbol':'4.2-2'}}
+        </label>
+      </li>
+    </ul>
+  </div>
+  <div class="panel panel-footer">
+    <button class="btn btn-warning" (click)="Delete()">Delete Account</button>
+    <button class="btn btn-danger" (click)="Destroy()">Destroy Account</button>
+  </div>
+</div>

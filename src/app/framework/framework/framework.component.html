@@ -1,0 +1,115 @@
+<nav class="navbar navbar-KPMG navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#menu-toggle" id="menu-toggle" (click)="toggleMenu($event)">
+        <span class="fa fa-list" aria-hidden="true">
+
+        </span>
+      </a>
+      <span class="hidden-xs">
+        <span  class="navbar-brand logo ">&nbsp;</span>
+      </span>
+      <span class="visible-xs">
+          <span  class="navbar-brand phone-title ">{{title}}</span>
+      </span>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+
+        <li class="notifications">
+          <a href="#">
+            <span class="fa fa-bell-o" aria-hidden="true">
+              <span class="badge">5</span>
+            </span>
+          </a>
+        </li>
+        <li class="help-icon"><a [routerLink]="['/home']"><span class="fa fa-home" aria-hidden="true"></span></a></li>
+        <li class="help-icon"><a href="#"><span class="fa fa-question" aria-hidden="true"></span></a></li>
+        <li class="bar-login" *ngIf="!IsAuthenticated" ><a  ><span  model-trigger="mdLogin"> <i class="fa fa-sign-in"></i></span></a> </li>
+        <li class="bar-login" *ngIf="!!IsAuthenticated" ><a><span (click)="logout()"> <i class="fa fa-sign-out"></i></span></a> </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<div id="wrapper" class="">
+  <div class="container-fluid">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <br>
+        </li>
+        <li  *ngIf="IsAuthenticated" >
+          <a class="profile">
+
+            <div>
+              <div>Profile</div>
+              <div>{{User.firstName}}&nbsp;{{User.lastName}}&nbsp; </div>
+            </div>
+
+          </a>
+        </li>
+        <li  *ngIf="!IsAuthenticated" >
+          <i class="fa fa-question-circle">
+            Who are you?
+          </i>
+        </li>
+        <li>
+          <hr class="menu-divider">
+        </li>
+        <li>
+          <aot-nav-tree></aot-nav-tree>
+        <li>
+      </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+
+    <div id="page-content-wrapper" >
+      <div class="container-fluid viewcontent">
+
+        <router-outlet></router-outlet>
+
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+</div>
+<app-simple-model [elementId]="'mdLogin'">
+  <div content>
+    <ul class="list-unstyled">
+
+      <li class="form-group">
+        <label class="label label-default">
+          User Name:
+        </label>
+        <input type="text" class="form-control" [(ngModel)]="username">
+      </li>
+      <li class="form-group">
+        <label class="label label-default">
+          Password:
+        </label>
+        <input type="password" class="form-control" [(ngModel)]="password">
+      </li>
+    </ul>
+  </div>
+  <div footer>
+    <button class="btn btn-default" data-dismiss="modal">
+      <i class="fa fa-close"></i>
+    </button>
+    <button class="btn btn-default" (click)="signin()" data-dismiss="modal">
+      <i class="fa fa-sign-in"></i>
+    </button>
+  </div>
+</app-simple-model>

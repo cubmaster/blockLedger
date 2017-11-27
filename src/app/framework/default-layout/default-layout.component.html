@@ -1,0 +1,20 @@
+<div class="layout enter">
+
+  <div class="title-area">
+    <div class="title">
+      <ng-content select='div[layout-title]'></ng-content>
+    </div>
+    <div class="subtitle">
+      <ng-content select='div[layout-sub-title]'></ng-content>
+
+    </div>
+    <div class="title-content">
+
+      <ng-content select='div[sub-title-content]'></ng-content>
+    </div>
+  </div>
+
+  <div class="content">
+    <ng-content select='div[sub-layout-content]'></ng-content>
+  </div>
+</div>

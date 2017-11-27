@@ -1,0 +1,87 @@
+<layout [pagetitle]="'Admin'"
+        [subtitle]="'Wallet Management'"
+        [type]="'default'"
+        [icon]="'fa-money'">
+  <div layout-content>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-push-6">
+            <button class="btn btn-success" model-trigger="mdAddAccount">
+               Add
+            </button>
+            <button class="btn btn-success" model-trigger="mdCreateAccount">Create</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3" *ngFor="let acct of accounts">
+          <app-wallet [account]="acct"
+                      (onDelete)="DeleteHandler($event)"
+                      (onDestroy)="DestroyHandler($event)"
+          ></app-wallet>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+</layout>
+<app-simple-model [elementId]="'mdAddAccount'">
+  <div content>
+    <ul class="list-unstyled">
+      <li class="form-group">
+        <label class="label label-default">
+          Name:
+        </label>
+        <input type="text" class="form-control" [(ngModel)]="currentAccount.name">
+      </li>
+      <li class="form-group">
+        <label class="label label-default">
+          Address:
+        </label>
+        <input type="text" class="form-control" [(ngModel)]="currentAccount.address">
+      </li>
+      <li class="form-group">
+        <label class="label label-default">
+          PrivateKey:
+        </label>
+        <input type="password" class="form-control" [(ngModel)]="currentAccount.privateKey">
+      </li>
+    </ul>
+  </div>
+  <div footer>
+    <button class="btn btn-default" data-dismiss="modal">
+      <i class="fa fa-close"></i>
+    </button>
+    <button class="btn btn-default" (click)="add()" data-dismiss="modal">
+      <i class="fa fa-sign-in"></i>
+    </button>
+  </div>
+</app-simple-model>
+<app-simple-model [elementId]="'mdCreateAccount'">
+  <div content>
+    <ul class="list-unstyled">
+      <li class="form-group">
+        <label class="label label-default">
+          Name:
+        </label>
+        <input type="text" class="form-control" [(ngModel)]="currentAccount.name">
+      </li>
+      <li class="form-group">
+        <label class="label label-default">
+          PrivateKey:
+        </label>
+        <input type="password" class="form-control" [(ngModel)]="currentAccount.privateKey">
+      </li>
+    </ul>
+  </div>
+  <div footer>
+    <button class="btn btn-default" data-dismiss="modal">
+      <i class="fa fa-close"></i>
+    </button>
+    <button class="btn btn-default" (click)="create()" data-dismiss="modal">
+      <i class="fa fa-sign-in"></i>
+    </button>
+  </div>
+</app-simple-model>

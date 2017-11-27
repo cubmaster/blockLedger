@@ -1,0 +1,25 @@
+<div class="layout"  >
+  <default-layout *ngIf="type=='default' || type==''">
+    <div layout-title >
+      <div class="pull-left backbutton" (click)="goBack();">
+        <i class="fa fa-3x fa-chevron-circle-left"></i>
+      </div>
+      <i class="fa {{icon}} fa-3x pull-right"></i>
+      <div  class="hidden-xs">
+        {{pagetitle}}
+      </div>
+
+    </div>
+    <div layout-sub-title >
+      <div  class="hidden-xs">
+        {{subtitle}}
+
+      </div>
+
+    </div>
+    <div  sub-layout-content>
+      <ng-content select="div[layout-content]"></ng-content>
+    </div>
+
+  </default-layout>
+</div>
