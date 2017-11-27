@@ -13,6 +13,7 @@ import {FrameworkModule} from './framework/framework.module';
 import {AdminModule} from './admin/admin.module';
 import {HttpInterceptor} from './services/HttpInterceptor';
 import {AccountManagementService} from './services/account-management.service';
+import {TransactionsModule} from './transactions/transactions.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AccountManagementService} from './services/account-management.service';
     HttpModule,
     AppRoutingModule,
     FrameworkModule,
-    AdminModule
+    AdminModule,
+    TransactionsModule
   ],
   providers: [
     JEService,

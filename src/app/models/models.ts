@@ -19,4 +19,6 @@ export class Account {
   address: string;
   privateKey: string;
   user: string;
+  balance: number;
+  xBalance: number;
 }

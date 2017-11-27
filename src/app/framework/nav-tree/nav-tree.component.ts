@@ -16,8 +16,12 @@ export class NavTreeComponent implements OnInit {
 
   ngOnInit() {
       this.nodes = [{text: 'Admin',hide: false, path: '', children: [
-                      {text: 'Wallets', hide: false,path: '/admin/wallets',  children: []}]},
-                    {text: 'My Schedule', hide: false,path: '', children: []},
+                      {text: 'Accounts', hide: false,path: '/admin/wallets',  children: []},
+                      {text: 'Preferences', hide: false,path: '/admin/wallets',  children: []}
+                    ]},
+                    {text: 'Transactions', hide: false,path: '', children: [
+                      {text: 'Send Money', hide: false,path: '/transactions/send',  children: []}
+                    ]},
                     {text: 'Roles Accreditation', hide: false,path: '', children: []},
                     {text: 'My Workbasket', hide: false,path: '', children: [
                       {text: 'IFRS Approvals', hide: false,path: '', children: []},
