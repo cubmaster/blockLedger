@@ -1,0 +1,12 @@
+<layout [pagetitle]="'Transactions'"
+        [subtitle]="'Receipt'"
+        [type]="'default'"
+        [icon]="'fa-file-text-o'">
+  <div layout-content>
+    <div *ngIf="!!receiptURL">
+      <a [href]="receiptURL">
+        <qr-code [value]="receiptURL" [size]="150"></qr-code>
+      </a>
+    </div>
+  </div>
+</layout>
