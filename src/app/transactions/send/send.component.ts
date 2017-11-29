@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {AccountManagementService} from '../../services/account-management.service';
 import {Account} from '../../models/models';
 import {Transaction, TransactionsService} from '../../services/transactions.service';
+import {environment} from '../../../environments/environment';
+
+
 
 @Component({
   selector: 'app-send',
@@ -13,6 +16,11 @@ export class SendComponent implements OnInit {
   public tx: Transaction;
   public userAccounts: Account[];
   public mode = 'WEI' ;
+  public receipt: string;
+  public selectedAccount: Account;
+  public receiptURL: string;
+
+
 
   constructor(private ams: AccountManagementService, private txs: TransactionsService) {
     this.tx = new Transaction();
@@ -25,13 +33,15 @@ export class SendComponent implements OnInit {
     });
   }
   send() {
-    this.txs.sendTransaction(this.mode, this.tx, function(error: string, ret: string){
-      if(!!error) {
+    const self = this;
+    this.tx.from = this.selectedAccount.address;
+    this.txs.sendTransaction(this.mode, this.tx, this.selectedAccount.privateKey,function(error: string, ret: string){
+
+      if (!!error) {
         console.error(error);
       }else {
-        console.log(ret);
+        self.receiptURL =  environment.client + '/transactions/receipt/' + ret;
       }
     });
-
   }
 }

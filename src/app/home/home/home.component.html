@@ -3,8 +3,12 @@
         [type]="'default'"
         [icon]="'fa-home'">
   <div layout-content>
-    <h3>Home...</h3>
+    <div>
+      {{w3.isConnected()}}
+    </div>
+    <div>
+      <pre>{{version|json}}</pre>
+    </div>
   </div>
-
 </layout>
 

@@ -22,3 +22,12 @@ export class Account {
   balance: number;
   xBalance: number;
 }
+
+export class Transact{
+  timestamp: number;
+  fromAddress: string;
+  toAddress: string;
+  value: number;
+  receipt: string;
+  user: string;
+}

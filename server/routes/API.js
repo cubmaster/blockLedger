@@ -84,7 +84,7 @@ router.route('/:obj/list')
                 });
         }else{
 
-            req.Schema.find(fil,
+            req.Schema.find(fil.where,
                 function (err, List) {
                     if (err)
                         return res.send(500, { error: err });

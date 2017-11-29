@@ -11,18 +11,17 @@ export class Web3BaseService {
   public conn: web3;
 
   constructor() {
-    if (typeof this.conn  !== 'undefined') {
-      this.conn = new web3(web3.currentProvider);
-    } else {
-      // set the provider you want from Web3.providers
-      this.conn = new web3(new web3.providers.HttpProvider(environment.blockchain));
-    }
 
+      const w: any = window;
 
+      if (typeof w.web3 !== 'undefined') {
+        this.conn = new web3(w.web3.currentProvider);
+      } else {
+        // set the provider you want from Web3.providers
+        this.conn = new web3(new web3.providers.HttpProvider(environment.blockchain));
+      }
 
   }
-
-
 
   getBalance(acct: string, fn: any) {
     const self = this;
@@ -30,14 +29,13 @@ export class Web3BaseService {
       if (!!err) {
         console.error(err);
       }else {
-        fn( self.getEther(bal) );
+        let balance = bal.toNumber();
+        fn( self.getEther(balance) );
       }
     });
-
-
   }
   getEther(val: any){
-  const ret =  this.conn.fromWei(val, 'ether').toNumber();
+  const ret =  this.conn.fromWei(val, 'ether');
     console.log(ret);
     return ret;
   }
@@ -46,7 +44,22 @@ export class Web3BaseService {
     return this.conn.isConnected();
   }
 
-  accounts(): any{
-    return  this.conn.personal.accounts();
+  accounts(cb) {
+    return  this.conn.eth.getAccounts(function(error, result){
+      if(!!error){
+        console.error(error);
+      }else {
+        cb(result);
+      }
+    });
   }
+
+  version(cb) {
+    return this.conn.version.getNode(function(error, result){
+      console.log(result);
+      cb(error, result);
+    });
+
+  }
+
 }

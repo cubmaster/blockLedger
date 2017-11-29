@@ -31,7 +31,8 @@ export class DataService{
                 .map(this.extractData)
                 .catch(this.handleError);
         }else{
-            return this.http.post(this.server + '/api/' + obj + '/list', filter)
+            let x = {filter: filter};
+            return this.http.post(this.server + '/api/' + obj + '/list', x)
                 .map(this.extractData)
                 .catch(this.handleError);
         }
@@ -84,7 +85,7 @@ export class DataService{
 }
 
 export class datafilter{
-    constructor(public _where: object, public _order:string)
+    constructor(public where: object, public order:string)
     {
 
     }

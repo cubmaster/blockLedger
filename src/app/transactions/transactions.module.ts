@@ -7,19 +7,21 @@ import {FrameworkModule} from '../framework/framework.module';
 import {AccountManagementService} from '../services/account-management.service';
 import {TransactionsService} from '../services/transactions.service';
 import {FormsModule} from '@angular/forms';
-
+import { QRCodeModule } from 'angular2-qrcode';
+import { ReceiptComponent } from './receipt/receipt.component';
 
 @NgModule({
   imports: [
     CommonModule,
     TransactionsRoutingModule,
     FrameworkModule,
-    FormsModule
+    FormsModule,
+    QRCodeModule
   ],
   providers: [
     AccountManagementService,
     TransactionsService
   ],
-  declarations: [SendComponent]
+  declarations: [SendComponent, ReceiptComponent]
 })
 export class TransactionsModule  { }

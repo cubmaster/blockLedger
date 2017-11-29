@@ -25,6 +25,9 @@ export class WalletsComponent implements OnInit {
   ngOnInit() {
     const id = this.us.getCurrentUser().id;
     const self = this;
+     this.ams.accounts(function(result){
+       console.log(result);
+     });
 
     this.price.getSpot('ETH-USD').subscribe(val =>{
       this.xrate = val.data.amount;
@@ -61,10 +64,9 @@ export class WalletsComponent implements OnInit {
 
   setBalance(acct: Account){
     const self = this;
-    this.ams.getBalance(acct.address, function(bal: number){
+    this.ams.getBalance(acct.address, function(bal: any){
       acct.balance = bal;
       acct.xBalance = bal * self.xrate;
-
     });
   }
 

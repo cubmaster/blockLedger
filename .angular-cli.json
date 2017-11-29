@@ -33,6 +33,7 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
+        "test": "environments/environment.testnet.ts",
         "prod": "environments/environment.prod.ts"
       }
     }

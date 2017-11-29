@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Web3BaseService} from '../../services/web3-base.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public version: any;
+  constructor(public w3: Web3BaseService) {
+    const self = this;
+    w3.version(function(error, result){
+      if(!!error){
+        console.error(error);
+      }else{
+        self.version = result;
+      }
+    });
+
+  }
 
   ngOnInit() {
   }

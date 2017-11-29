@@ -10,8 +10,8 @@
                 <label class="label label-default">
                   From:
                 </label>
-                <select class="form-control" [(ngModel)]="tx.from">
-                   <option *ngFor="let acct of userAccounts" [value]="acct.address">{{acct.name}}</option>
+                <select class="form-control" [(ngModel)]="selectedAccount">
+                   <option *ngFor="let acct of userAccounts" [ngValue]="acct">{{acct.name}}</option>
                 </select>
               </div>
               <div class="form-group">
@@ -44,6 +44,14 @@
                 Send
               </button>
 
+            </div>
+            <div class="col-md-6">
+              <h4>Receipt</h4>
+              <div *ngIf="!!receiptURL">
+                <a [href]="receiptURL">
+                  <qr-code [value]="receiptURL" [size]="150"></qr-code>
+                </a>
+              </div>
             </div>
           </div>
 
