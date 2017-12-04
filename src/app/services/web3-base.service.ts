@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import * as web3 from 'Web3';
 import {environment} from '../../environments/environment';
 
-
+import * as TruffleContract from 'truffle-contract';
 
 
 @Injectable()
@@ -21,8 +21,13 @@ export class Web3BaseService {
         this.conn = new web3(new web3.providers.HttpProvider(environment.blockchain));
       }
 
-  }
 
+  }
+  public  artifactsToContract(artifact: any) {
+      const contractAbstraction = TruffleContract(artifact);
+      contractAbstraction.setProvider(this.conn.currentProvider);
+      return contractAbstraction;
+  }
   getBalance(acct: string, fn: any) {
     const self = this;
     this.conn.eth.getBalance(acct, function(err, bal){

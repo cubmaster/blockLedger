@@ -4,7 +4,8 @@ module.exports = {
       host: "localhost",
       port: 8545,
       network_id: "*" // Match any network id
-    },
+      //http://localhost:8545
+    }/*
     test: {
       host: "localhost",
       port: 8545,
@@ -17,6 +18,7 @@ module.exports = {
         network_id: 72
 
     }
+    */
   }
 };
 

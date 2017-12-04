@@ -9,7 +9,8 @@ import {Web3BaseService} from '../../services/web3-base.service';
 })
 export class HomeComponent implements OnInit {
 
-  public version: any;
+  public version: string;
+  public provider: string;
   constructor(public w3: Web3BaseService) {
     const self = this;
     w3.version(function(error, result){
@@ -17,9 +18,9 @@ export class HomeComponent implements OnInit {
         console.error(error);
       }else{
         self.version = result;
+        self.provider = self.w3.conn.currentProvider.host;
       }
     });
-
   }
 
   ngOnInit() {

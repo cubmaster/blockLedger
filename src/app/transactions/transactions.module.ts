@@ -9,6 +9,7 @@ import {TransactionsService} from '../services/transactions.service';
 import {FormsModule} from '@angular/forms';
 import { QRCodeModule } from 'angular2-qrcode';
 import { ReceiptComponent } from './receipt/receipt.component';
+import { ConsignmentComponent } from './consignment/consignment.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { ReceiptComponent } from './receipt/receipt.component';
     AccountManagementService,
     TransactionsService
   ],
-  declarations: [SendComponent, ReceiptComponent]
+  declarations: [SendComponent, ReceiptComponent, ConsignmentComponent]
 })
 export class TransactionsModule  { }

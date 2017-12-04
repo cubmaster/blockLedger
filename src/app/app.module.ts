@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import {  JEService} from './services/je.service';
+
 import {contract} from 'truffle-contract';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +14,7 @@ import {AdminModule} from './admin/admin.module';
 import {HttpInterceptor} from './services/HttpInterceptor';
 import {AccountManagementService} from './services/account-management.service';
 import {TransactionsModule} from './transactions/transactions.module';
+import {ConsignmentService} from './services/consignment.service';
 
 @NgModule({
   declarations: [
@@ -29,11 +30,11 @@ import {TransactionsModule} from './transactions/transactions.module';
     TransactionsModule
   ],
   providers: [
-    JEService,
     PriceAPIService,
     UserService,
     HttpInterceptor,
-    AccountManagementService
+    AccountManagementService,
+    ConsignmentService,
 
   ],
   exports: [RouterModule],

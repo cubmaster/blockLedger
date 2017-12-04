@@ -20,7 +20,8 @@ export class NavTreeComponent implements OnInit {
                       {text: 'Preferences', hide: false,path: '/admin/settings',  children: []}
                     ]},
                     {text: 'Transactions', hide: false,path: '', children: [
-                      {text: 'Send Money', hide: false,path: '/transactions/send',  children: []}
+                      {text: 'Send Money', hide: false,path: '/transactions/send',  children: []},
+                      {text: 'Consignment', hide: false,path: '/transactions/consignment',  children: []}
                     ]},
                     {text: 'Roles Accreditation', hide: false,path: '', children: []},
                     {text: 'My Workbasket', hide: false,path: '', children: [

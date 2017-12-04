@@ -31,3 +31,15 @@ export class Transact{
   receipt: string;
   user: string;
 }
+
+
+export class Consignment {
+  timestamp: number;
+  contractAddress: string;
+  fromAddress: string;
+  Price: number;
+  location: string;
+  user: string;
+  description: string;
+
+}
