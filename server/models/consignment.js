@@ -10,7 +10,8 @@ module.exports = function() {
     location:String,
     user: String,
     description: String,
-    contractAddress: String
+    contractAddress: String,
+    receipt: String
   });
 
   mongoose.model('Consignment', Consignment);

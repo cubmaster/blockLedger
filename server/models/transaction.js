@@ -9,7 +9,8 @@ module.exports = function() {
     toAddress: String,
     value: Number,
     receipt:String,
-    user: String
+    user: String,
+    state: String
 
   });
 

@@ -17,7 +17,9 @@ export class ModelTriggerDirective implements OnInit  {
 
   ngOnInit(){
       this.el.addEventListener('click',e=>{
+
         $('#' + this.modalId).modal({});
+
       });
   }
 }

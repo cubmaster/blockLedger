@@ -9,6 +9,7 @@ import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 export class SimpleModelComponent implements OnInit {
 
   @Input() elementId: string;
+  @Input () title: string;
 
   constructor() { }
 

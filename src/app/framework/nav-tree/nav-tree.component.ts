@@ -24,11 +24,10 @@ export class NavTreeComponent implements OnInit {
                       {text: 'Consignment', hide: false,path: '/transactions/consignment',  children: []}
                     ]},
                     {text: 'Roles Accreditation', hide: false,path: '', children: []},
-                    {text: 'My Workbasket', hide: false,path: '', children: [
-                      {text: 'IFRS Approvals', hide: false,path: '', children: []},
-                      {text: 'WRT Approvals', hide: false,path: '', children: []},
-                      {text: 'Roles Approvals', hide: false,path: '', children: []},
-                      {text: 'Administration', hide: false,path: '', children: []}
+                    {text: 'My Basket', hide: false,path: '', children: [
+                      {text: 'Consignments', hide: false,path: '/transactions/consignmentShop', children: []},
+                      {text: 'Transactions', hide: false,path: '', children: []},
+                      {text: 'My Consignments', hide: false,path: '', children: []}
                     ]}];
   }
 

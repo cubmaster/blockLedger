@@ -15,9 +15,10 @@ export class SendComponent implements OnInit {
 
   public tx: Transaction;
   public userAccounts: Account[];
+  public selectedAccount: Account;
   public mode = 'WEI' ;
   public receipt: string;
-  public selectedAccount: Account;
+
   public receiptURL: string;
 
 

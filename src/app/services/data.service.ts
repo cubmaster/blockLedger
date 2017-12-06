@@ -60,7 +60,7 @@ export class DataService{
     };
     save(obj:any,object:any) {
 
-        return this.http.post(this.server + '/api/' + obj + '/save',JSON.stringify(object))
+        return this.http.post(this.server + '/api/' + obj + '/save', object)
             .map(this.extractData)
             .catch(this.handleError);
 

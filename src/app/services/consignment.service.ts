@@ -43,5 +43,20 @@ export class ConsignmentService extends Web3BaseService {
   getByAddress(address: string) {
        return this.consignmentContract.at(address);
   }
+  buy(address: string,price: number,  cb){
+    let contract = this.consignmentContract.at(address);
+    let trans = new Transaction();
+    trans.gasPrice = 100;
+    trans.gas = 210000;
+    trans.value = price;
+    trans.from = address;
+    trans.to = contract.address;
+
+    contract.purchase.sendTransaction(trans).then(ret => {
+        cb(ret);
+    });
+
+  }
+
 
 }

@@ -10,6 +10,8 @@ import {FormsModule} from '@angular/forms';
 import { QRCodeModule } from 'angular2-qrcode';
 import { ReceiptComponent } from './receipt/receipt.component';
 import { ConsignmentComponent } from './consignment/consignment.component';
+import { ConsignmentShopComponent } from './consignment-shop/consignment-shop.component';
+import {UIHelpersModule} from '../uihelpers/uihelpers.module';
 
 @NgModule({
   imports: [
@@ -17,12 +19,13 @@ import { ConsignmentComponent } from './consignment/consignment.component';
     TransactionsRoutingModule,
     FrameworkModule,
     FormsModule,
-    QRCodeModule
+    QRCodeModule,
+    UIHelpersModule
   ],
   providers: [
     AccountManagementService,
     TransactionsService
   ],
-  declarations: [SendComponent, ReceiptComponent, ConsignmentComponent]
+  declarations: [SendComponent, ReceiptComponent, ConsignmentComponent, ConsignmentShopComponent]
 })
 export class TransactionsModule  { }

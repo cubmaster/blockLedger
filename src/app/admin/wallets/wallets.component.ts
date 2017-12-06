@@ -15,7 +15,7 @@ export class WalletsComponent implements OnInit {
   private xrate: number;
 
   public currentAccount: Account = new Account();
-  public accounts: Account[];
+  public accounts: Account[] = [];
   constructor(private ds: DataService,
               private us: UserService,
               private ams: AccountManagementService,

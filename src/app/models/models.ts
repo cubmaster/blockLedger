@@ -41,5 +41,7 @@ export class Consignment {
   location: string;
   user: string;
   description: string;
+  state: string;
+  receipt: string;
 
 }

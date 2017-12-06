@@ -42,15 +42,13 @@ router.route('/:obj/create')
         });
 });
 
-router.route('/:obj/:id/delete')
-    .post(function (req, res) {
-        req.Schema.remove({_id: req.Object._id},function(err){
-            if (err) return res.send(500, {error: err});
-        });
-
-    });
-
-
+//.route('/:obj/:id/delete')
+//    .post(function (req, res) {
+//        req.Schema.remove({_id: req.Object._id},function(err){
+//            if (err) return res.send(500, {error: err});
+//        });
+//
+//    });
 
 //if Object schema has a roles property then it's a secure object and user must have role in correct
 //context to access it
@@ -94,14 +92,21 @@ router.route('/:obj/list')
 
 
 
+    })
+    .get (function (req,res){
+
+      req.Schema.find({},
+        function (err, List) {
+          if (err)
+            return res.send(500, { error: err });
+          res.json(List);
+        });
     });
 
-
-
-router.route('/:obj/:id/save')
+router.route('/:obj/save')
     .post(function (req, res) {
 
-        var query = {'_id':req.Object.id};
+        var query = {'_id':req.body._id};
         delete req.body._id;
         delete req.body.__v;
         req.Schema.findOneAndUpdate(query, req.body, {upsert:true}, function(err, obj){
@@ -109,10 +114,9 @@ router.route('/:obj/:id/save')
             return res.status(200).send(obj);
         });
 
-
     });
 
-router.route('/:obj/:id/delete')
+router.route('/:obj/delete')
     .post(function (req, res) {
 
         req.Schema.findByIdAndRemove(req.Object.id,null,function(err){
