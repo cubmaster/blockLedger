@@ -21,12 +21,9 @@ export class SendComponent implements OnInit {
 
   public receiptURL: string;
 
-
-
   constructor(private ams: AccountManagementService, private txs: TransactionsService) {
     this.tx = new Transaction();
   }
-
 
   ngOnInit() {
     this.ams.getUserAccounts().subscribe(( acct: Account[]) => {

@@ -4,13 +4,14 @@ import * as web3 from 'Web3';
 import {environment} from '../../environments/environment';
 
 import * as TruffleContract from 'truffle-contract';
+import {PriceAPIService} from './price-api.service';
 
 
 @Injectable()
 export class Web3BaseService {
   public conn: web3;
 
-  constructor() {
+  constructor(public ps: PriceAPIService) {
 
       const w: any = window;
 
@@ -65,6 +66,29 @@ export class Web3BaseService {
       cb(error, result);
     });
 
+  }
+  convertToWei (mode: string,  value: any ): Promise<string> {
+    const self = this;
+
+    if (mode === 'ETH'){
+       return new Promise<string>(resolve =>{
+         resolve(this.conn.toWei(value, 'ether'));
+       });
+    } else if (mode === 'USD') {
+      return new Promise<string>(resolve =>{
+        this.ps.getSpot('ETH-USD').subscribe((val: any) => {
+          resolve(self.conn.toWei(value * (1 / val.data.amount)));
+         });
+      });
+    } else if (mode === 'WEI') {
+      return new Promise<string>(resolve => {
+        resolve(self.conn.toBigNumber(value));
+      });
+    }
+
+  }
+  convertFromWei(value:any) : number {
+    return this.conn.fromWei(value)
   }
 
 }

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import {Web3BaseService} from './web3-base.service';
 import {UserService} from './user.service';
-import {PriceAPIService} from './price-api.service';
+
 import {Transact} from '../models/models';
 import {datafilter, DataService} from './data.service';
+import {PriceAPIService} from './price-api.service';
 
 @Injectable()
 export class TransactionsService extends Web3BaseService {
 
-  constructor(private ds: DataService, private us: UserService,private ps: PriceAPIService) {
-    super();
+  constructor(private ds: DataService, private us: UserService, public ps: PriceAPIService) {
+    super(ps);
   }
 
   sendTransaction (mode: string,  obj: Transaction, pass: string,  cb: any){
@@ -29,20 +30,32 @@ export class TransactionsService extends Web3BaseService {
   }
   execTrans(obj: Transaction, pass: string, cb: any) {
     const self = this;
-    this.conn.personal.unlockAccount( obj.from, pass);
-    this.conn.eth.sendTransaction(obj, function(error, result){
-      self.conn.personal.lockAccount(obj.from);
-      const tx = new Transact();
-      tx.value = obj.value;
-      tx.fromAddress = obj.from;
-      tx.toAddress = obj.to;
-      tx.receipt = result;
-      tx.timestamp = Date.now();
-      tx.user = self.us.getCurrentUser().id;
-      self.ds.create('Transaction', tx).subscribe();
+    this.conn.personal.unlockAccount( obj.from, pass, function(err, res) {
+      if (!err) {
+        console.error(err);
+      } else {
+        console.log(res);
 
-      cb(error, result);
+        self.conn.eth.sendTransaction(obj, function (error, result) {
+          try{
+            self.conn.personal.lockAccount(obj.from);
+          } finally {
+            const tx = new Transact();
+            tx.value = obj.value;
+            tx.fromAddress = obj.from;
+            tx.toAddress = obj.to;
+            tx.receipt = result;
+            tx.timestamp = Date.now();
+            tx.user = self.us.getCurrentUser().id;
+            self.ds.create('Transaction', tx).subscribe();
+            cb(error, result);
+          }
+        });
+      }
+
+
     });
+
   }
   getReceipt(id: string) {
 

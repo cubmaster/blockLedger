@@ -37,11 +37,19 @@ export class Consignment {
   timestamp: number;
   contractAddress: string;
   fromAddress: string;
-  Price: number;
+  buyerAddress: string;
+  price: string;
   location: string;
   user: string;
   description: string;
   state: string;
   receipt: string;
-
+  _id: any;
 }
+
+export class TransactionResult{
+  tx: string;
+  receipt: any;
+  logs: any[];
+}
+

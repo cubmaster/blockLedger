@@ -12,6 +12,7 @@ import { ReceiptComponent } from './receipt/receipt.component';
 import { ConsignmentComponent } from './consignment/consignment.component';
 import { ConsignmentShopComponent } from './consignment-shop/consignment-shop.component';
 import {UIHelpersModule} from '../uihelpers/uihelpers.module';
+import { PickupComponent } from './pickup/pickup.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,6 @@ import {UIHelpersModule} from '../uihelpers/uihelpers.module';
     AccountManagementService,
     TransactionsService
   ],
-  declarations: [SendComponent, ReceiptComponent, ConsignmentComponent, ConsignmentShopComponent]
+  declarations: [SendComponent, ReceiptComponent, ConsignmentComponent, ConsignmentShopComponent, PickupComponent]
 })
 export class TransactionsModule  { }

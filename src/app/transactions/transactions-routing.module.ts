@@ -4,16 +4,19 @@ import {SendComponent} from './send/send.component';
 import {ReceiptComponent} from './receipt/receipt.component';
 import {ConsignmentComponent} from './consignment/consignment.component';
 import {ConsignmentShopComponent} from './consignment-shop/consignment-shop.component';
+import {PickupComponent} from './pickup/pickup.component';
 
 const routes: Routes = [
   {path: 'receipt/:id', component: ReceiptComponent},
   {path: 'send', component: SendComponent},
   {path: 'consignment', component: ConsignmentComponent},
   {path: 'consignmentShop', component: ConsignmentShopComponent},
+  {path: 'consignmentShop/pickup/:id', component: PickupComponent},
   {path: '', component: SendComponent}
 ];
 
 @NgModule({
+
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })

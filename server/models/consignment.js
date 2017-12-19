@@ -6,12 +6,14 @@ module.exports = function() {
 
     timestamp: Date,
     fromAddress: String,
-    Price: Number,
+    buyerAddress:String,
+    price: Number,
+    state: String,
     location:String,
     user: String,
     description: String,
     contractAddress: String,
-    receipt: String
+    receipt: Object
   });
 
   mongoose.model('Consignment', Consignment);
