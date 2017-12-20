@@ -15,6 +15,7 @@ import {HttpInterceptor} from './services/HttpInterceptor';
 import {AccountManagementService} from './services/account-management.service';
 import {TransactionsModule} from './transactions/transactions.module';
 import {ConsignmentService} from './services/consignment.service';
+import {AlertsService} from './services/alerts.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {ConsignmentService} from './services/consignment.service';
     HttpInterceptor,
     AccountManagementService,
     ConsignmentService,
+    AlertsService
 
   ],
   exports: [RouterModule],

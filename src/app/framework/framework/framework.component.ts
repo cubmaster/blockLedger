@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import * as $ from 'jquery';
 import {UserModel} from '../../models/models';
+import {AlertsService} from '../../services/alerts.service';
 
 
 
@@ -26,7 +27,8 @@ export class FrameworkComponent implements OnInit {
 
 
   constructor(private user_service: UserService,
-              private router: Router) {
+              private router: Router,
+              private alerts: AlertsService) {
   }
 
 
@@ -47,7 +49,7 @@ export class FrameworkComponent implements OnInit {
       this.IsAuthenticated = true;
     }
 
-
+    this.alerts.start();
   }
   ngOnDestroy(){
 

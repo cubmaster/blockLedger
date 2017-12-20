@@ -7,6 +7,7 @@ import {Transaction} from './transactions.service';
 import {datafilter, DataService} from './data.service';
 import {PriceAPIService} from './price-api.service';
 import {promise} from 'selenium-webdriver';
+import {AlertsService} from './alerts.service';
 
 @Injectable()
 export class ConsignmentService extends Web3BaseService {
