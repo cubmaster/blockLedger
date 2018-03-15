@@ -3,6 +3,7 @@ var mods = require('./models.js');
 var dataInit = require('./dataInit.js');
 
 module.exports = function (app,config) {
+    console.log('Try connection to ' + config.db);
     mongoose.connect(config.db, { useMongoClient: true });
     mongoose.Promise = global.Promise;
     var db = mongoose.connection;

@@ -2,7 +2,7 @@
  * Created by wmcclellan on 7/10/2015.
  */
 
-var User = require('mongoose').model('User');
+//var User = require('mongoose').model('User');
 var encrypt = require('../utilities/encryption.js');
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var config = require('../config/config.js')[env];
