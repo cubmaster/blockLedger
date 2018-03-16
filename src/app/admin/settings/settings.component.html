@@ -1,0 +1,14 @@
+<layout [pagetitle]="'Admin'"
+        [subtitle]="'Settings'"
+        [type]="'default'"
+        [icon]="'fa-gear'">
+  <div layout-content>
+    <div class="form-group">
+      <label class="label label-default">
+        Network:
+      </label>
+      <input [(ngModel)] = "network" class="form-control" (change)="updateSettings()">
+    </div>
+
+  </div>
+</layout>
