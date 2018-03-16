@@ -7,7 +7,7 @@ var app = express();
 
 
 
-//require('./config/mongoose.js')(app, config);
+require('./config/mongoose.js')(app, config);
 
 require('./config/express.js')(app);
 
