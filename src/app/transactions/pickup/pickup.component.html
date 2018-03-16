@@ -1,0 +1,55 @@
+<layout [pagetitle]="'Transactions'"
+        [subtitle]="'Pickup'"
+        [type]="'default'"
+        [icon]="'fa-file-text-o'">
+  <div layout-content>
+    <div class="container-fluid">
+      <div class="row">
+      <div class="col-md-12">
+
+
+      <div *ngIf="!!receiptURL">
+        <a [href]="receiptURL">
+          <qr-code [value]="receiptURL" [size]="150"></qr-code>
+        </a>
+      </div>
+      <div>
+        <div class="form-group">
+          <label class="label label-default">
+            Item Description
+          </label>
+          <label class="form-control">
+            {{trans?.description}}
+          </label>
+
+        </div>
+        <div class="form-group">
+          <label class="label label-default">
+            Item Location
+          </label>
+          <label class="form-control">
+            {{trans?.location}}
+          </label>
+
+        </div>
+        <div class="form-group">
+          <label class="label label-default">
+            Item Price
+          </label>
+          <label class="form-control">
+            {{trans?.price}}
+          </label>
+
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success" (click)="complete()">
+            Complete Purchase
+          </button>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</layout>

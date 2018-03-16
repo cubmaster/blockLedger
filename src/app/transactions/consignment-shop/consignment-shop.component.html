@@ -1,0 +1,102 @@
+<app-simple-model  [elementId]="'mdBuyConsignment'" [title]="'Purchase Account'">
+  <div content>
+      <ul class="list-unstyled">
+        <li class="form-group">
+          <label class="label label-default">
+            Account:
+          </label>
+          <select class="form-control" [(ngModel)]="selectedAccount">
+            <option *ngFor="let acct of userAccounts" [ngValue]="acct">{{acct.name}}</option>
+          </select>
+        </li>
+
+      </ul>
+  </div>
+  <div footer>
+    <button class="btn btn-default" data-dismiss="modal" >
+      <i class="fa fa-close"></i>
+    </button>
+    <button class="btn btn-default" (click)="Buy()" data-dismiss="modal">
+      <i class="fa fa-sign-in"></i>
+    </button>
+  </div>
+</app-simple-model>
+<app-simple-model  [elementId]="'mdReceipt'" [title]="'Purchase Receipt'">
+  <div content>
+    <div *ngIf="selectedItem?.receipt">
+      <a [href]="'.//transactions/consignmentShop/pickup/' + selectedItem?._id">
+        <qr-code [value]="'./transactions/consignmentShop/pickup/' + sselectedItem?._id" [size]="150"></qr-code>
+      </a>
+    </div>
+
+
+  </div>
+  <div footer>
+    <button class="btn btn-default" data-dismiss="modal">
+      <i class="fa fa-close"></i>
+    </button>
+    <button class="btn btn-default" (click)="Buy()" data-dismiss="modal">
+      <i class="fa fa-sign-in"></i>
+    </button>
+  </div>
+</app-simple-model>
+
+<layout [pagetitle]="'Basket'"
+        [subtitle]="'Consignments'"
+        [type]="'default'"
+        [icon]="'fa-diamond'">
+  <div layout-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+
+          <table class="table table-hover table-bordered">
+            <thead>
+              <td>
+                Description
+              </td>
+              <td>
+                Location
+              </td>
+              <td>
+                Price
+              </td>
+              <td>
+                Buy
+              </td>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of consignments" (click)="SelectItem(item)">
+                <td>
+                  {{item.description}}
+                </td>
+                <td>
+                  {{item.location}}
+                </td>
+                <td>
+                  {{convertToEth(item.price)}}
+                </td>
+                <td>
+                  <button class="btn btn-success" *ngIf="!item.receipt" model-trigger="mdBuyConsignment"  >
+                      <i class="fa fa-usd"></i>
+                  </button>
+                  <button class="btn btn-success" *ngIf="!!item.receipt" model-trigger="mdReceipt">
+                    <i class="fa fa-file-text-o"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<layout>
+
+
+
+
+
+
+
+

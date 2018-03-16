@@ -1,0 +1,60 @@
+<layout [pagetitle]="'Transactions'"
+        [subtitle]="'Consignments'"
+        [type]="'default'"
+        [icon]="'fa-diamond'">
+  <div layout-content>
+      <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="label label-default">
+                  Selling Account:
+                </label>
+                <select class="form-control" [(ngModel)]="selectedAccount">
+                  <option *ngFor="let acct of userAccounts" [ngValue]="acct">{{acct.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="label label-default">
+                  Description:
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="tx.description" />
+
+              </div>
+              <div class="form-group">
+                <label class="label label-default">
+                  Location:
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="tx.location" />
+
+              </div>
+              <div class="form-group">
+                <label class="label label-default">
+                  Amount:
+                </label>
+                <div class="input-group">
+                  <ul class="list-inline">
+                    <li>
+                      <select class="form-control" [(ngModel)]="mode">
+                        <option value="USD">USD</option>
+                        <option value="ETH">ETH</option>
+                        <option value="WEI">WEI</option>
+                      </select>
+                    </li>
+                    <li>
+                      <input type="number" class="form-control" [(ngModel)]="tx.price" aria-label="..." >
+                    </li>
+                  </ul>
+                </div><!-- /input-group -->
+              </div>
+              <button class="btn btn-success" (click)="createNew()">
+                Create Contract
+              </button>
+              <div *ngIf="complete" class="well well-lg">
+                Consignment Contract created!
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</layout>
