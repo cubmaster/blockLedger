@@ -1,19 +1,26 @@
-version: '2'
+version: '2.3'
 
 services:
   node:
     build:
       context: .
-      dockerfile: server.dockerfile
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    volumes:
+      - ./dist:/var/dist
     networks:
       - nodeapp-network
 
   mongodb:
     image: mongo
+    ports:
+          - '27017:27017'
     networks:
       - nodeapp-network
+
+volumes:
+  dist:
 
 networks:
   nodeapp-network:

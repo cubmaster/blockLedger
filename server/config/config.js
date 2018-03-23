@@ -4,7 +4,7 @@ var pjson = require('../../package.json');
 var pname = pjson.name;
 module.exports = {
     development: {
-        db: 'mongodb://user1:password1@ds046867.mlab.com:46867/' + pname,
+        db: 'mongodb://mongodb:27017/' + pname,
         rootPath: rootPath,
         SSL: false,
         port: process.env.PORT || 3000,
@@ -15,7 +15,7 @@ module.exports = {
     production: {
         rootPath: rootPath,
         SSL: false,
-        db:  '',
+        db: 'mongodb://user1:password1@ds046867.mlab.com:46867/' + pname,
         port: process.env.PORT || 80,
         privateKey: "",
         Auth:'NTLM'

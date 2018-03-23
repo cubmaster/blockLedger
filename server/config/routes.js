@@ -47,11 +47,13 @@ module.exports = function (app) {
       res.header("Access-Control-Allow-Methods", "*");
       next();
     });
+    console.log("Setting Routes");
     app.use('/test', testCtrl);
     app.use('/api/user', usersCtrl);
     app.use('/api/uploads',fileUpload);
     app.use('/api',API);
    // app.use('/modules', node_modules);
+    app.use('/', index);
     app.use('*', index);
 
 }
