@@ -4,7 +4,7 @@ var pjson = require('../../package.json');
 var pname = pjson.name;
 module.exports = {
     development: {
-        db: 'mongodb://mongodb:27017/' + pname,
+        db: 'mongodb://localhost:27017/' + pname,
         rootPath: rootPath,
         SSL: false,
         port: process.env.PORT || 3000,

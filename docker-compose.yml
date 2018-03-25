@@ -7,15 +7,20 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    volumes:
-      - ./dist:/var/dist
     networks:
       - nodeapp-network
 
   mongodb:
     image: mongo
     ports:
-          - '27017:27017'
+      - '27017:27017'
+    networks:
+      - nodeapp-network
+
+  ganash:
+    image: trufflesuite/ganache-cli:latest
+    ports:
+      - '8545:8545'
     networks:
       - nodeapp-network
 
