@@ -13,9 +13,11 @@ Simple transactions using Etherium or a more complex consignment implementation 
 smart contract.
 
 
-Start:
+**Start:**
 
 npm install -g @angular/cli
+
+npm install
 
 docker-compose up
 
