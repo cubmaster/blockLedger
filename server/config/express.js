@@ -5,7 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var express = require('express');
 var passport = require('passport');
-//var ppconfig = require('./passport');
+var ppconfig = require('./passport');
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var config = require('../config/config.js')[env];
 
@@ -36,20 +36,20 @@ module.exports = function (app)
     app.use(bodyParser.json({limit: '50mb'}));
     app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
-//    app.use(passport.initialize());
-//    if(config.Auth !=='NTLM')
-//    {
-//
-//        passport.use('local-register', ppconfig.register);
-//        passport.use('local-login', ppconfig.login);
-//    }
-//
-//    passport.serializeUser(function(user, done) {
-//        done(null, user);
-//    });
-//
-//    passport.deserializeUser(function(user, done) {
-//        done(null, user);
-//    });
+    app.use(passport.initialize());
+    if(config.Auth !=='NTLM')
+    {
+
+        passport.use('local-register', ppconfig.register);
+        passport.use('local-login', ppconfig.login);
+    }
+
+    passport.serializeUser(function(user, done) {
+        done(null, user);
+    });
+
+    passport.deserializeUser(function(user, done) {
+        done(null, user);
+    });
 
 };

@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "server": "node server/www.js",
+    "startdocker": "ng serve -o -env docker",
     "start": "ng serve -o",
     "contracts": "truffle.cmd compile --reset && truffle.cmd migrate --reset",
     "Ropstien": "geth --identity 'mynode' --datadir './data' --rpc  --rpccorsdomain='*'  --testnet --fast",

@@ -3,11 +3,19 @@ var rootPath = path.normalize(__dirname + '/../client/');
 var pjson = require('../../package.json');
 var pname = pjson.name;
 module.exports = {
-    development: {
-        db: 'mongodb://localhost:27017/' + pname,
+  development: {
+      db: 'mongodb://localhost:27017/' + pname,
+      rootPath: rootPath,
+      SSL: false,
+      port: process.env.PORT || 8081,
+      privateKey: "ImmaPrivateKey",
+      Auth:'Forms'
+    },
+    docker: {
+        db: 'mongodb://mongodb:27017/' + pname,
         rootPath: rootPath,
         SSL: false,
-        port: process.env.PORT || 3000,
+        port: process.env.PORT || 8080,
         privateKey: "ImmaPrivateKey",
         Auth:'Forms'
 

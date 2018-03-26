@@ -32,7 +32,7 @@ if(config.SSL){
     };
 
 
-    app.set('port', process.env.PORT || 8080);
+    app.set('port', config.port);
     server = https.createServer(options, app);
 } else{
 
@@ -40,7 +40,7 @@ if(config.SSL){
     };
 
 
-    app.set('port', process.env.PORT || 8080);
+    app.set('port', config.port);
     server = http.createServer(app);
 
 

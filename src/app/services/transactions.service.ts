@@ -31,7 +31,7 @@ export class TransactionsService extends Web3BaseService {
   execTrans(obj: Transaction, pass: string, cb: any) {
     const self = this;
     this.conn.personal.unlockAccount( obj.from, pass, function(err, res) {
-      if (!err) {
+      if (!!err) {
         console.error(err);
       } else {
         console.log(res);
